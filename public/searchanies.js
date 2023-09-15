@@ -1,5 +1,7 @@
 !function(e, t) {
+    console.log('[e]', e)
     var o = e.Searchanise || {};
+    console.log('[o]', o)
     if (o.host = (o.host || "searchserverapi.com").split("http://").join("").split("https://").join(""),
     o.passiveListenerSupported = !1,
     o.userOptions = o.options || {},
@@ -11,10 +13,11 @@
     "8n7x9j4E0E" == o.userOptions.api_key || "6t7w7U4T9m" == o.userOptions.api_key || "0c2V2T1h6K" == o.userOptions.api_key || "0f8t6G2p5K" == o.userOptions.api_key || !1 === o.useCDN ? o.prefix = "https:" == document.location.protocol ? "https://s3.amazonaws.com/static.searchanise.com/" : "http://static.searchanise.com/" : o.prefix = ("https:" == document.location.protocol ? "https://" : "http://") + "searchanise-ef84.kxcdn.com/",
     o.paths.jq = o.jq || "https://ajax.aspnetcdn.com/ajax/jQuery/jQuery-3.6.0.min.js",
     o.paths.jqRollback = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js",
-    "www.searchanise.com" == o.host || "searchserverapi.com" == o.host || "www.searchserverapi.com" == o.host ? o.paths.widgets = o.widgets || o.prefix + "widgets.23051.min.js" : o.paths.widgets = "//" + o.host + "/widgets/v2.0/compiled/widgets.min.js",
-    o.paths.tpl = o.tpl || o.prefix + "templates.[API_KEY].js".split("[API_KEY]").join(o.userOptions.api_key),
+    o.paths.widgets = "./widgets.min.js",
+    // o.paths.tpl = o.tpl || o.prefix + "templates.[API_KEY].js".split("[API_KEY]").join(o.userOptions.api_key),
+    o.paths.tpl = "./templates.js",
     o.paths.styles = o.styles || [],
-    o.paths.preload = o.preload || o.prefix + "preload_data.[API_KEY].js".split("[API_KEY]").join(o.userOptions.api_key),
+    o.paths.preload = "./preload_data.js",
     o.userOptions.api_key) {
         try {
             window.addEventListener("snize_test", null, Object.defineProperty({}, "passive", {
@@ -134,7 +137,14 @@
                     o.templates.CustomJS && (a.innerHTML = o.templates.CustomJS,
                     o.templates.CustomJSPlace && "body" == o.templates.CustomJSPlace ? document.body.appendChild(a) : document.head.appendChild(a));
                     var e = 0;
-                    o.paths.styles = o.getStyles(o.templates),
+                    o.paths.styles = [
+                        './items_multicolumn_light_new.23051.css',
+                        './items_multicolumn_light_new.mobile.23051.css',
+                        './quick-view.23051.css',
+                        './recommendation.23051.css',
+                        './results_big_pictures_new.23051.css',
+                        './results_big_pictures_new.mobile.23051.css',
+                    ],
                     o.paths.styles.forEach((function(t, a, s) {
                         e++,
                         o.loadCss(t),
@@ -177,4 +187,5 @@
         )),
         e.Searchanise = o
     }
+    console.log('ooo', o.paths.tpl)
 }(window);
